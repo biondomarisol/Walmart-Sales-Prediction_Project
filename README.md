@@ -1,54 +1,66 @@
-# 🛒 Progetto di Previsione delle Vendite Settimanali Walmart
+# Previsione delle vendite settimanali dei negozi Walmart
 
-Questo progetto si focalizza sulla modellazione e la previsione delle vendite settimanali (`Weekly_Sales`) dei negozi Walmart. Utilizza tecniche di Machine Learning per analizzare l'influenza di variabili chiave come festività (`IsHoliday`), temperatura, prezzo del carburante e tasso di disoccupazione.
+> Un progetto di Machine Learning per prevedere le vendite settimanali dei negozi Walmart. Confronta l'efficacia di un modello di **Regressione Lineare** e di una **Rete Neurale (MLP)**, con un'analisi dettagliata sull'impatto delle festività e della stagionalità sui ricavi.
 
-L'analisi esplorativa e i modelli di previsione sono implementati nello script **Prediction_model.py**.
+## Obiettivo del Progetto
 
-## 🚀 Getting Started
+L'obiettivo principale di questo progetto è sviluppare un modello robusto per stimare le **Vendite Settimanali (Weekly\_Sales)** di 45 diversi negozi Walmart.
+L'analisi mira a identificare i fattori chiave che influenzano le vendite, dando particolare risalto alla **stagionalità** e all'impatto delle **variabili macroeconomiche** come l'inflazione (CPI), il prezzo del carburante e il tasso di disoccupazione.
 
-Segui questi passaggi per configurare ed eseguire il progetto localmente.
+## Caratteristiche Principali
+
+Il file `Prediction_model.py` implementa il seguente flusso di lavoro di Machine Learning:
+
+* **Data Engineering:** Conversione della `Date` e creazione di feature temporali (`WeekOfYear`, `Month`).
+* **Feature Encoding:** Codifica One-Hot per la variabile categoriale `Store`.
+* **Standardizzazione:** Utilizzo di `StandardScaler` sulle feature continue per ottimizzare l'addestramento dei modelli, in particolare l'MLP.
+* **Modelli Confrontati:**
+    * **Regressione Lineare:** Utilizzato come benchmark.
+    * **MLP Regressor (Rete Neurale):** Per catturare relazioni più complesse e non lineari.
+* **Analisi Esplorativa (EDA):** Visualizzazione dell'andamento stagionale delle vendite.
+
+## Dati Utilizzati
+
+Il progetto utilizza il dataset `Walmart_Store_sales.csv`, contenente vendite settimanali e dati economici rilevanti dal 2010 al 2012.
+
+| Colonna | Tipo | Ruolo |
+| :--- | :--- | :--- |
+| **Weekly\_Sales** | Float | **Target** (Vendite Settimanali). |
+| **Store** | Int | Variabile categoriale per l'ID del negozio. |
+| **Holiday\_Flag** | Int | 1 se è una settimana di festa, 0 altrimenti. |
+| **CPI** | Float | Indice dei Prezzi al Consumo (Inflazione). |
+| **Unemployment** | Float | Tasso di disoccupazione. |
+
+## Installazione
+
+Per eseguire lo script sul tuo sistema, è necessario avere installato Python e le librerie elencate.
 
 ### Prerequisiti
 
-Assicurati di avere Python (versione 3.x) installato e di utilizzare un ambiente virtuale (es. Conda) per isolare le dipendenze.
+* Python 3.x
+* `pandas`
+* `numpy`
+* `scikit-learn`
+* `matplotlib`
 
-### ⚙️ Configurazione dell'Ambiente
+### Istruzioni
 
-1. **Attiva l'ambiente virtuale (es. Conda):**
-
-    ```bash
-    conda activate [nome_del_tuo_ambiente]
-    ```
-
-2. **Installa le librerie richieste:**
-
-    Il progetto si basa su librerie standard per l'analisi e il Machine Learning (come pandas, numpy e scikit-learn). A seconda del modello specifico utilizzato nel tuo codice, potresti aver bisogno di altre librerie (es. `tensorflow` per l'MLP).
-
-    ```bash
-    pip install pandas numpy scikit-learn matplotlib
-    # Aggiungi qui altre installazioni specifiche come:
-    # pip install tensorflow
-    ```
-
-### 💾 Installazione
-
-1. **Clona il repository:**
-
+1.  Clona il repository GitHub:
     ```bash
     git clone [https://github.com/biondomarisol/Walmart-Sales-Prediction-Project.git](https://github.com/biondomarisol/Walmart-Sales-Prediction-Project.git)
     ```
-
-2. **Naviga nella directory del progetto:**
-
+2.  Vai alla directory del progetto:
     ```bash
     cd Walmart-Sales-Prediction-Project
     ```
+3.  Installa le dipendenze richieste:
+    ```bash
+    pip install pandas numpy scikit-learn matplotlib
+    ```
 
-    *Verifica che i file `Prediction_model.py` e `Walmart_Store_sales.csv` siano presenti in questa directory.*
+## Utilizzo
 
-### ▶️ Utilizzo
-
-Esegui lo script principale dalla tua console o terminale:
+Avvia lo script Python per eseguire l'intero processo di analisi, addestramento e valutazione:
 
 ```bash
 python Prediction_model.py
