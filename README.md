@@ -46,31 +46,33 @@ The project relies on the `Walmart_Store_sales.csv` dataset, which covers weekly
 
 ---
 
-## Installation and setup
+## Getting started
 
-To execute the project, ensure you have Python installed and follow the setup instructions below.
+Follow these steps to configure and run the project locally.
 
 ### Prerequisites
 
-* Python 3.x
-* `pandas`
-* `numpy`
-* `scikit-learn`
-* `matplotlib`
+Ensure you have Python (version 3.x) installed and are using a virtual environment (e.g., Conda) to isolate dependencies.
 
-### Instructions
+### Environment Setup
 
-1.  Clone the GitHub repository:
+1. **Clone the GitHub repository:**
     ```bash
     git clone [https://github.com/biondomarisol/Walmart-Sales-Prediction-Project.git](https://github.com/biondomarisol/Walmart-Sales-Prediction-Project.git)
     ```
-2.  Navigate to the project directory:
+2. **Navigate to the project directory:**
     ```bash
     cd Walmart-Sales-Prediction-Project
     ```
-3.  Install the required dependencies:
+3. **Activate the virtual environment (e.g., Conda):**
+    ```bash
+    conda activate [your_environment_name]
+    ```
+4. **Install the required libraries:**
     ```bash
     pip install pandas numpy scikit-learn matplotlib
+    # Note: TensorFlow is required for the MLP Neural Network model.
+    pip install tensorflow
     ```
 
 ## Execution
