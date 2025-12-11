@@ -1,41 +1,56 @@
-# Previsione delle vendite settimanali dei negozi Walmart
+# Walmart weekly sales prediction
 
-> Un progetto di Machine Learning per prevedere le vendite settimanali dei negozi Walmart. Confronta l'efficacia di un modello di **Regressione Lineare** e di una **Rete Neurale (MLP)**, con un'analisi dettagliata sull'impatto delle festività e della stagionalità sui ricavi.
+> A Machine Learning project to forecast the weekly sales of Walmart stores. This project compares the effectiveness of a **Linear Regression** model against a **Neural Network (MLP)**, featuring a detailed analysis of how holidays and seasonality impact revenues.
 
-## Obiettivo del Progetto
+## Project goal
 
-L'obiettivo principale di questo progetto è sviluppare un modello robusto per stimare le **Vendite Settimanali (Weekly\_Sales)** di 45 diversi negozi Walmart.
-L'analisi mira a identificare i fattori chiave che influenzano le vendite, dando particolare risalto alla **stagionalità** e all'impatto delle **variabili macroeconomiche** come l'inflazione (CPI), il prezzo del carburante e il tasso di disoccupazione.
+The primary objective of this project is to develop a robust predictive model to estimate the **Weekly\_Sales** for 45 different Walmart stores.
+The analysis aims to identify the key factors influencing sales, giving particular emphasis to:
+1.  **Seasonality:** the effect of temporal features like week of the year and month.
+2.  **Holidays:** the sharp impact of major US holiday weeks (e.g., Thanksgiving, Christmas) on revenue.
+3.  **Macroeconomic variables:** the influence of factors such as inflation (CPI), fuel price, and the unemployment rate on consumer spending.
 
-## Caratteristiche Principali
+## Core implementation details
 
-Il file `Prediction_model.py` implementa il seguente flusso di lavoro di Machine Learning:
+The `Prediction_model.py` script implements the full Machine Learning pipeline, ensuring a comparison between a baseline statistical model and a deep learning approach.
 
-* **Data Engineering:** Conversione della `Date` e creazione di feature temporali (`WeekOfYear`, `Month`).
-* **Feature Encoding:** Codifica One-Hot per la variabile categoriale `Store`.
-* **Standardizzazione:** Utilizzo di `StandardScaler` sulle feature continue per ottimizzare l'addestramento dei modelli, in particolare l'MLP.
-* **Modelli Confrontati:**
-    * **Regressione Lineare:** Utilizzato come benchmark.
-    * **MLP Regressor (Rete Neurale):** Per catturare relazioni più complesse e non lineari.
-* **Analisi Esplorativa (EDA):** Visualizzazione dell'andamento stagionale delle vendite.
+### Feature engineering and preprocessing
 
-## Dati Utilizzati
+* **Date transformation:** the `Date` column is converted into a datetime object to extract crucial temporal features: `WeekOfYear` and `Month`.
+* **Store encoding:** the categorical variable `Store` is processed using **One-Hot Encoding** to prevent the model from inferring incorrect ordinal relationships.
+* **Data scaling:** the continuous features (including CPI, Unemployment, and the newly engineered features) are scaled using `StandardScaler`. This is a critical step to ensure optimal performance, especially for the **MLP Regressor**.
 
-Il progetto utilizza il dataset `Walmart_Store_sales.csv`, contenente vendite settimanali e dati economici rilevanti dal 2010 al 2012.
+### Models compared 
 
-| Colonna | Tipo | Ruolo |
+Two models were trained and evaluated to assess performance and complexity trade-offs:
+
+| Model | Type | Rationale |
 | :--- | :--- | :--- |
-| **Weekly\_Sales** | Float | **Target** (Vendite Settimanali). |
-| **Store** | Int | Variabile categoriale per l'ID del negozio. |
-| **Holiday\_Flag** | Int | 1 se è una settimana di festa, 0 altrimenti. |
-| **CPI** | Float | Indice dei Prezzi al Consumo (Inflazione). |
-| **Unemployment** | Float | Tasso di disoccupazione. |
+| **Linear Regression** | Benchmark statistical model | Provides a transparent baseline to understand the linear relationships between features and sales. |
+| **MLP Regressor** | Neural Network | Used to capture complex, non-linear interactions within the dataset, potentially leading to higher accuracy. |
 
-## Installazione
+## Data utilized
 
-Per eseguire lo script sul tuo sistema, è necessario avere installato Python e le librerie elencate.
+The project relies on the `Walmart_Store_sales.csv` dataset, which covers weekly sales and relevant economic data from 2010 to 2012.
 
-### Prerequisiti
+| Column | Type | Role |
+| :--- | :--- | :--- |
+| **Weekly\_Sales** | Float | **Target** Variable (weekly sales). |
+| **Store** | Int | Store ID. |
+| **Date** | Date | Sales date (used for feature engineering). |
+| **Holiday\_Flag** | Int | 1 if it is a holiday week, 0 otherwise. |
+| **Temperature** | Float | Average temperature in the region. |
+| **Fuel\_Price** | Float | Fuel price in the region. |
+| **CPI** | Float | Consumer price index (inflation). |
+| **Unemployment** | Float | Unemployment rate. |
+
+---
+
+## Installation and setup
+
+To execute the project, ensure you have Python installed and follow the setup instructions below.
+
+### Prerequisites
 
 * Python 3.x
 * `pandas`
@@ -43,24 +58,24 @@ Per eseguire lo script sul tuo sistema, è necessario avere installato Python e 
 * `scikit-learn`
 * `matplotlib`
 
-### Istruzioni
+### Instructions
 
-1.  Clona il repository GitHub:
+1.  Clone the GitHub repository:
     ```bash
     git clone [https://github.com/biondomarisol/Walmart-Sales-Prediction-Project.git](https://github.com/biondomarisol/Walmart-Sales-Prediction-Project.git)
     ```
-2.  Vai alla directory del progetto:
+2.  Navigate to the project directory:
     ```bash
     cd Walmart-Sales-Prediction-Project
     ```
-3.  Installa le dipendenze richieste:
+3.  Install the required dependencies:
     ```bash
     pip install pandas numpy scikit-learn matplotlib
     ```
 
-## Utilizzo
+## Execution
 
-Avvia lo script Python per eseguire l'intero processo di analisi, addestramento e valutazione:
+Run the main Python script to perform the data processing, model training, and evaluation:
 
 ```bash
 python Prediction_model.py
