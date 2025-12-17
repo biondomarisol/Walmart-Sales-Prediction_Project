@@ -10,14 +10,14 @@ This project was entirely developed by the team composed of:
 
 ---
 
-### Project Pipeline and Team Responsibilities
+### Project pipeline and team responsibilities
 
 About the authors' contribution, here is how we went ahead and developed the project pipeline.
 
 * A.C.B. and M.B ran extensive research over the Internet to explore modeling approaches and datasets.
 * A.M. checked out the initial project steps and assisted in code structure using Generative AI platforms such as ChatGPT and Gemini.
 * M.B. and A.M. dealt with the specific code implementation and debugging using Visual Studio Code and assisted by Generative AI tools like Gemini for troubleshooting and best practice suggestions.
-* A.C.B. and A.M. collaborated to finalize and wrap up the core modeling code (`Prediction_model.py`).
+* A.C.B. and A.M. collaborated to finalize and wrap up the core modeling code (`Walmart_WeeklySales_Prediction.py`).
 * M.B. wrote the comprehensive documentation.
 * All team members worked together to ensure the final version of the project was uploaded to the GitHub repository.
 
