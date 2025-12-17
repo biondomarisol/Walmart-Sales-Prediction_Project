@@ -12,7 +12,7 @@ The analysis aims to identify the key factors influencing sales, giving particul
 
 ## Core implementation details
 
-The `Prediction_model.py` script implements the full Machine Learning pipeline, ensuring a comparison between a baseline statistical model and a deep learning approach.
+The `Walmart_WeeklySales_Prediction.py` script implements the full Machine Learning pipeline, ensuring a comparison between a baseline statistical model and a deep learning approach.
 
 ### Feature engineering and preprocessing
 
@@ -33,16 +33,16 @@ Two models were trained and evaluated to assess performance and complexity trade
 
 The project relies on the `Walmart_Store_sales.csv` dataset, which covers weekly sales and relevant economic data from 2010 to 2012.
 
-| Column | Type | Role |
-| :--- | :--- | :--- |
-| **Weekly\_Sales** | Float | **Target** Variable |
-| **Store** | Int | Store ID |
-| **Date** | Date | Sales date (used for feature engineering) |
-| **Holiday\_Flag** | Int | 1 if it is a holiday week, 0 otherwise |
-| **Temperature** | Float | Average temperature in the region |
-| **Fuel\_Price** | Float | Fuel price in the region |
-| **CPI** | Float | Consumer price index (inflation) |
-| **Unemployment** | Float | Unemployment rate |
+| Column | Type | Role | Unit of measurement |
+| :--- | :--- | :--- | :--- |
+| **Weekly\_Sales** | Float | **Target** Variable | USD ($) |
+| **Store** | Int | Store ID | / |
+| **Date** | Date | Sales date (used for feature engineering) | String format |
+| **Holiday\_Flag** | Int | 1 if it is a holiday week, 0 otherwise | Boolean |
+| **Temperature** | Float | Average temperature in the region | °F |
+| **Fuel\_Price** | Float | Fuel price in the region | USD/gallon | 
+| **CPI** | Float | Consumer price index (inflation) | Index |
+| **Unemployment** | Float | Unemployment rate | % |
 
 ---
 
@@ -53,6 +53,11 @@ Follow these steps to configure and run the project locally.
 ### Prerequisites
 
 Ensure you have Python (version 3.x) installed and are using a virtual environment (e.g., Conda) to isolate dependencies.
+
+1. **Install the required libraries:**
+    ```bash
+    pip install pandas numpy scikit-learn matplotlib
+    ```
 
 ### Environment Setup
 
@@ -66,13 +71,12 @@ Ensure you have Python (version 3.x) installed and are using a virtual environme
     ```
 3. **Activate the virtual environment (e.g., Conda):**
     ```bash
+    conda env list
     conda activate [your_environment_name]
     ```
-4. **Install the required libraries:**
-    ```bash
-    pip install pandas numpy scikit-learn matplotlib
-    # Note: TensorFlow is required for the MLP Neural Network model.
-    pip install tensorflow
+4. **Select Python interpreter:**
+   ```bash
+    #select Python interpreter linked with your environment 
     ```
 
 ## Execution
@@ -80,4 +84,4 @@ Ensure you have Python (version 3.x) installed and are using a virtual environme
 Run the main Python script to perform the data processing, model training, and evaluation:
 
 ```bash
-python Prediction_model.py
+python Walmart_WeeklySales_Prediction.py
